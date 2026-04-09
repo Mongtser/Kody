@@ -11,7 +11,6 @@
     :root {
       --bg: #f4efe6;
       --paper: rgba(255, 251, 245, 0.9);
-      --panel: #fffaf2;
       --panel-strong: #f8f1e7;
       --ink: #1f1a17;
       --muted: #64594f;
@@ -19,7 +18,6 @@
       --accent: #b5532f;
       --accent-deep: #7d2d16;
       --accent-soft: #f0d4c7;
-      --sage: #5d7260;
       --shadow: 0 24px 70px rgba(56, 34, 20, 0.12);
       --radius-lg: 28px;
       --radius-md: 20px;
@@ -112,11 +110,10 @@
     }
 
     .hero-main,
-    .hero-side,
     .card,
-    .strip,
     .timeline-item,
-    .contact-card {
+    .contact-card,
+    .metric {
       background: var(--paper);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
@@ -142,10 +139,8 @@
     }
 
     .hero-side {
-      padding: 1.1rem;
-      border-radius: var(--radius-lg);
       display: grid;
-      gap: 1rem;
+      gap: 0.9rem;
       align-content: start;
     }
 
@@ -246,7 +241,6 @@
       padding: 1rem;
       border-radius: 18px;
       background: var(--panel-strong);
-      border: 1px solid rgba(31, 26, 23, 0.08);
     }
 
     .metric strong {
@@ -261,18 +255,6 @@
       font-size: 0.94rem;
     }
 
-    .mini-note {
-      padding: 1rem;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(93, 114, 96, 0.14), rgba(255, 255, 255, 0.52));
-      border: 1px solid rgba(93, 114, 96, 0.15);
-    }
-
-    .mini-note p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
     .section {
       padding: 1.8rem 0 0;
     }
@@ -283,11 +265,6 @@
       align-items: end;
       gap: 1rem;
       margin-bottom: 1.2rem;
-    }
-
-    .section-header p {
-      color: var(--muted);
-      max-width: 62ch;
     }
 
     .grid-2,
@@ -373,15 +350,7 @@
       font-weight: 600;
     }
 
-    .strip {
-      border-radius: var(--radius-lg);
-      padding: 1.4rem;
-      display: grid;
-      gap: 1rem;
-      margin-top: 1.2rem;
-    }
-
-    .strip-grid {
+    .process-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1rem;
@@ -404,6 +373,7 @@
     .timeline {
       display: grid;
       gap: 1rem;
+      margin-top: 1rem;
     }
 
     .timeline-item {
@@ -424,6 +394,7 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
+      margin-top: 1rem;
     }
 
     .case-study {
@@ -437,24 +408,11 @@
       color: var(--muted);
     }
 
-    .callout {
-      border-radius: var(--radius-md);
-      padding: 1.2rem 1.3rem;
-      background: linear-gradient(135deg, rgba(181, 83, 47, 0.12), rgba(255, 255, 255, 0.68));
-      border: 1px solid rgba(181, 83, 47, 0.16);
-      color: var(--ink);
-    }
-
-    .resume-box {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 1.2rem;
-    }
-
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
+      margin-top: 1rem;
     }
 
     .contact-card {
@@ -477,8 +435,7 @@
       .hero-shell,
       .grid-2,
       .grid-4,
-      .resume-box,
-      .strip-grid,
+      .process-grid,
       .case-study-grid,
       .contact-grid,
       .timeline-item {
@@ -512,11 +469,10 @@
       }
 
       .hero-main,
-      .hero-side,
       .card,
-      .strip,
       .timeline-item,
-      .contact-card {
+      .contact-card,
+      .metric {
         padding: 1rem;
       }
     }
@@ -573,10 +529,6 @@
             <strong>CAD + Test</strong>
             <span>Comfort moving between design revision, validation, troubleshooting, and implementation</span>
           </div>
-        </div>
-        <div class="mini-note">
-          <h3>Best next upgrade for this site</h3>
-          <p>Add prototype photos, CAD screenshots, FEA plots, sketches, and short build notes for Car Bar and Smart Gun Case. Those assets will do a lot of the convincing for you.</p>
         </div>
       </aside>
     </div>
@@ -639,28 +591,6 @@
             </div>
           </article>
         </div>
-
-        <div class="strip">
-          <h3>What I would show in an interview for these projects</h3>
-          <div class="strip-grid">
-            <div class="step">
-              <strong>1. Design intent</strong>
-              <span class="muted">The problem, constraints, and why the concept was chosen over alternatives.</span>
-            </div>
-            <div class="step">
-              <strong>2. Iteration history</strong>
-              <span class="muted">Sketches, CAD revisions, failure points, and what changed between versions.</span>
-            </div>
-            <div class="step">
-              <strong>3. Technical proof</strong>
-              <span class="muted">Analysis results, test observations, code structure, and prototype evidence.</span>
-            </div>
-            <div class="step">
-              <strong>4. Lessons learned</strong>
-              <span class="muted">What I would improve next and how the project changed my engineering judgment.</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -673,11 +603,7 @@
           </div>
         </div>
 
-        <div class="card callout">
-          <strong>Portfolio rule I follow:</strong> personal and school projects are documented in detail; internship work is presented through process, testing approach, analysis logic, and measurable but non-sensitive outcomes.
-        </div>
-
-        <div class="case-study-grid" style="margin-top:1rem;">
+        <div class="case-study-grid">
           <article class="case-study">
             <h3>JBT</h3>
             <p class="small muted">Design Engineer Intern</p>
@@ -695,7 +621,7 @@
           </article>
         </div>
 
-        <div class="timeline" style="margin-top:1rem;">
+        <div class="timeline">
           <article class="timeline-item">
             <div class="time">Jul 2024 - Oct 2024</div>
             <div>
@@ -737,7 +663,7 @@
           </div>
         </div>
 
-        <div class="strip-grid">
+        <div class="process-grid">
           <div class="step">
             <strong>Frame the problem</strong>
             <span class="muted">Understand the user need, operational constraint, or failure mode before jumping into the design.</span>
@@ -785,11 +711,6 @@
             <p class="muted">Documentation, cross-functional communication, technical translation, process improvement, and willingness to own the next step.</p>
           </article>
         </div>
-
-        <div class="strip" style="margin-top:1.2rem;">
-          <h3>What kind of role fits me best</h3>
-          <p class="muted">I am most interested in early-career roles where I can keep building depth in mechanical design, manufacturing engineering, product development, validation, and technical operations.</p>
-        </div>
       </div>
     </section>
 
@@ -802,30 +723,19 @@
           </div>
         </div>
 
-        <div class="resume-box">
-          <div class="card">
-            <h3>Resume and portfolio next steps</h3>
-            <ul class="list">
-              <li>Upload your latest resume PDF to <code>assets/resume/Kody_Lo_Resume.pdf</code>.</li>
-              <li>Add project photos, CAD screenshots, and any FEA or testing visuals you are comfortable sharing.</li>
-              <li>Replace any placeholder contact links with your final LinkedIn or project repository URLs.</li>
-              <li>Add one image gallery or short case-study PDF for Car Bar and Smart Gun Case when ready.</li>
-            </ul>
-          </div>
-          <div class="contact-grid">
-            <article class="contact-card">
-              <h3>Email</h3>
-              <p><a href="mailto:kodylauj@gmail.com">kodylauj@gmail.com</a></p>
-            </article>
-            <article class="contact-card">
-              <h3>GitHub</h3>
-              <p><a href="https://github.com/Mongtser" target="_blank" rel="noreferrer">github.com/Mongtser</a></p>
-            </article>
-            <article class="contact-card">
-              <h3>Resume</h3>
-              <p><a href="assets/resume/Kody_Lo_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a></p>
-            </article>
-          </div>
+        <div class="contact-grid">
+          <article class="contact-card">
+            <h3>Email</h3>
+            <p><a href="mailto:kodylauj@gmail.com">kodylauj@gmail.com</a></p>
+          </article>
+          <article class="contact-card">
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/Mongtser" target="_blank" rel="noreferrer">github.com/Mongtser</a></p>
+          </article>
+          <article class="contact-card">
+            <h3>Resume</h3>
+            <p><a href="assets/resume/Kody_Lo_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a></p>
+          </article>
         </div>
       </div>
     </section>
