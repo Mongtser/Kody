@@ -4,37 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kody Lo | Mechanical Engineering Portfolio</title>
-  <meta name="description" content="Mechanical Engineering portfolio of Kody Lo featuring design, prototyping, CAD, testing, embedded systems, and software projects." />
+  <meta name="description" content="Mechanical engineering portfolio for Kody Lo featuring product design, prototyping, CAD, testing, embedded systems, and NDA-safe engineering case studies." />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap');
+
     :root {
-      --bg: #0b1020;
-      --panel: #121933;
-      --panel-2: #1a2447;
-      --text: #edf2ff;
-      --muted: #b6c2e1;
-      --accent: #7fb3ff;
-      --accent-2: #9ee5c2;
-      --line: #2a3768;
-      --shadow: 0 10px 30px rgba(0,0,0,.28);
-      --max: 1120px;
+      --bg: #f4efe6;
+      --paper: rgba(255, 251, 245, 0.9);
+      --panel: #fffaf2;
+      --panel-strong: #f8f1e7;
+      --ink: #1f1a17;
+      --muted: #64594f;
+      --line: rgba(31, 26, 23, 0.12);
+      --accent: #b5532f;
+      --accent-deep: #7d2d16;
+      --accent-soft: #f0d4c7;
+      --sage: #5d7260;
+      --shadow: 0 24px 70px rgba(56, 34, 20, 0.12);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --max: 1160px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+      color: var(--ink);
       background:
-        radial-gradient(circle at top right, rgba(127,179,255,.18), transparent 28%),
-        radial-gradient(circle at top left, rgba(158,229,194,.12), transparent 18%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+        radial-gradient(circle at top left, rgba(181, 83, 47, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(93, 114, 96, 0.16), transparent 24%),
+        linear-gradient(180deg, #f8f1e7 0%, #f4efe6 48%, #efe6da 100%);
+      line-height: 1.65;
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    img { max-width: 100%; display: block; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
     .container {
       width: min(var(--max), calc(100% - 2rem));
@@ -44,135 +62,219 @@
     .nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,16,32,.78);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(244, 239, 230, 0.78);
+      border-bottom: 1px solid rgba(31, 26, 23, 0.08);
     }
 
     .nav-inner {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 1rem;
       padding: 1rem 0;
     }
 
     .brand {
-      font-weight: 800;
-      letter-spacing: .3px;
-      color: var(--text);
+      font-family: 'Sora', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      align-items: center;
     }
 
     .nav-links a {
       color: var(--muted);
       font-weight: 600;
-      font-size: .95rem;
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-deep);
+    }
+
+    .hero {
+      padding: 5rem 0 2.5rem;
+    }
+
+    .hero-shell {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1.4rem;
+      align-items: stretch;
+    }
+
+    .hero-main,
+    .hero-side,
+    .card,
+    .strip,
+    .timeline-item,
+    .contact-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: '';
+      position: absolute;
+      right: -80px;
+      bottom: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(181, 83, 47, 0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-side {
+      padding: 1.1rem;
+      border-radius: var(--radius-lg);
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(181, 83, 47, 0.1);
+      color: var(--accent-deep);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Sora', sans-serif;
+      line-height: 1.1;
+      margin: 0 0 0.7rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      max-width: 12ch;
+      margin-top: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 64ch;
+      margin-top: 1rem;
+    }
+
+    .hero-intro {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+
+    .hero-intro strong {
+      color: var(--accent-deep);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.6rem;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: .5rem;
-      padding: .85rem 1.1rem;
-      border-radius: .9rem;
-      border: 1px solid transparent;
+      padding: 0.95rem 1.2rem;
+      border-radius: 999px;
       font-weight: 700;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
     }
 
-    .button:hover { transform: translateY(-1px); text-decoration: none; }
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
     .button.primary {
-      background: linear-gradient(135deg, var(--accent), #9bc8ff);
-      color: #0a132d;
-      box-shadow: var(--shadow);
+      background: var(--accent);
+      color: #fff6ef;
     }
+
     .button.secondary {
-      background: rgba(255,255,255,.03);
-      border-color: var(--line);
-      color: var(--text);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.4);
     }
 
-    .hero {
-      padding: 5.5rem 0 4rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr .85fr;
-      gap: 2rem;
-      align-items: stretch;
-    }
-
-    .hero-card,
-    .panel {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 1.4rem;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card {
-      padding: 2rem;
-    }
-
-    .eyebrow {
-      color: var(--accent-2);
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      font-size: .8rem;
-      font-weight: 800;
-      margin-bottom: .8rem;
-    }
-
-    h1, h2, h3 { line-height: 1.15; margin: 0 0 .8rem; }
-    h1 { font-size: clamp(2.2rem, 4vw, 4.2rem); }
-    h2 { font-size: clamp(1.5rem, 2.6vw, 2.2rem); }
-    h3 { font-size: 1.15rem; }
-
-    .lead {
-      color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 62ch;
-    }
-
-    .cta-row {
-      margin-top: 1.3rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: .9rem;
-    }
-
-    .hero-stats {
+    .metric-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      padding: 1.2rem;
+      gap: 0.9rem;
     }
 
-    .stat {
+    .metric {
       padding: 1rem;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.05);
-      border-radius: 1rem;
+      border-radius: 18px;
+      background: var(--panel-strong);
+      border: 1px solid rgba(31, 26, 23, 0.08);
     }
 
-    .stat strong {
+    .metric strong {
       display: block;
+      font-family: 'Sora', sans-serif;
       font-size: 1.5rem;
-      margin-bottom: .2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .mini-note {
+      padding: 1rem;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(93, 114, 96, 0.14), rgba(255, 255, 255, 0.52));
+      border: 1px solid rgba(93, 114, 96, 0.15);
+    }
+
+    .mini-note p {
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     .section {
-      padding: 1rem 0 4rem;
+      padding: 1.8rem 0 0;
     }
 
     .section-header {
@@ -180,13 +282,12 @@
       justify-content: space-between;
       align-items: end;
       gap: 1rem;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
     }
 
     .section-header p {
-      margin: 0;
       color: var(--muted);
-      max-width: 65ch;
+      max-width: 62ch;
     }
 
     .grid-2,
@@ -195,35 +296,109 @@
       display: grid;
       gap: 1.2rem;
     }
-    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
 
     .card {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 1.25rem;
-      padding: 1.2rem;
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
     }
 
-    .card p, .card li { color: var(--muted); }
-    .badge-row {
+    .project-card {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 1rem;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .small {
+      font-size: 0.92rem;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .list li + li {
+      margin-top: 0.45rem;
+    }
+
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: .55rem;
-      margin-top: .9rem;
+      gap: 0.55rem;
     }
 
-    .badge {
+    .tag {
       display: inline-flex;
-      padding: .45rem .7rem;
+      padding: 0.42rem 0.68rem;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(127,179,255,.08);
-      color: #dce9ff;
-      font-size: .86rem;
-      font-weight: 700;
+      border: 1px solid rgba(31, 26, 23, 0.09);
+      background: rgba(255, 255, 255, 0.68);
+      color: var(--ink);
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .strip {
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .strip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .step {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(31, 26, 23, 0.08);
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: var(--accent-deep);
+      font-family: 'Sora', sans-serif;
     }
 
     .timeline {
@@ -232,104 +407,118 @@
     }
 
     .timeline-item {
+      border-radius: var(--radius-md);
+      padding: 1.3rem;
       display: grid;
       grid-template-columns: 180px 1fr;
       gap: 1rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(255,255,255,.06);
     }
 
-    .timeline-item:last-child { border-bottom: 0; }
-    .time-label { color: var(--accent-2); font-weight: 700; }
-    .muted { color: var(--muted); }
+    .time {
+      color: var(--accent-deep);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
 
-    .project {
+    .case-study-grid {
       display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
     }
 
-    .project .project-top {
-      display: flex;
-      align-items: start;
-      justify-content: space-between;
-      gap: 1rem;
+    .case-study {
+      padding: 1.2rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.56);
+      border: 1px solid rgba(31, 26, 23, 0.08);
     }
 
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .75rem;
-      margin-top: .8rem;
-    }
-
-    .project ul {
-      padding-left: 1.1rem;
-      margin: .8rem 0 0;
+    .case-study p {
+      color: var(--muted);
     }
 
     .callout {
-      border-left: 4px solid var(--accent);
-      padding: 1rem 1rem 1rem 1.1rem;
-      background: rgba(127,179,255,.08);
-      border-radius: 0 1rem 1rem 0;
-      color: #dce9ff;
-    }
-
-    .footer {
-      padding: 2rem 0 3rem;
-      color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,.06);
-      margin-top: 2rem;
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.3rem;
+      background: linear-gradient(135deg, rgba(181, 83, 47, 0.12), rgba(255, 255, 255, 0.68));
+      border: 1px solid rgba(181, 83, 47, 0.16);
+      color: var(--ink);
     }
 
     .resume-box {
       display: grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 1.2rem;
     }
 
-    .checklist {
-      margin: 0;
-      padding-left: 1.1rem;
-    }
-
-    .contact-list {
+    .contact-grid {
       display: grid;
-      gap: .8rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
     }
 
-    .contact-item {
-      padding: 1rem;
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 1rem;
-      background: rgba(255,255,255,.03);
+    .contact-card {
+      border-radius: 20px;
+      padding: 1.2rem;
     }
 
-    .small {
-      font-size: .92rem;
+    .contact-card a {
+      color: var(--accent-deep);
+      font-weight: 700;
+      word-break: break-word;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid,
+    .footer {
+      padding: 2.5rem 0 3rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 980px) {
+      .hero-shell,
       .grid-2,
-      .grid-3,
       .grid-4,
       .resume-box,
+      .strip-grid,
+      .case-study-grid,
+      .contact-grid,
       .timeline-item {
         grid-template-columns: 1fr;
       }
 
-      .hero { padding-top: 4rem; }
-      .hero-stats { grid-template-columns: 1fr 1fr; }
-      .nav-inner { align-items: start; flex-direction: column; }
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      h1 {
+        max-width: none;
+      }
     }
 
-    @media (max-width: 560px) {
-      .container { width: min(var(--max), calc(100% - 1rem)); }
-      .hero-card, .card { padding: 1rem; }
-      .hero-stats { grid-template-columns: 1fr; padding: 0; background: none; border: 0; }
-      .section-header { align-items: start; flex-direction: column; }
-      .nav-links { gap: .75rem; }
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--max), calc(100% - 1rem));
+      }
+
+      .nav-inner,
+      .section-header,
+      .project-meta {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .metric-grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main,
+      .hero-side,
+      .card,
+      .strip,
+      .timeline-item,
+      .contact-card {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
@@ -340,53 +529,54 @@
       <div class="nav-links">
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
+        <a href="#process">Process</a>
         <a href="#skills">Skills</a>
-        <a href="#resume">Resume</a>
-        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
 
   <header class="hero" id="top">
-    <div class="container hero-grid">
-      <div class="hero-card">
-        <div class="eyebrow">Mechanical Engineering Portfolio</div>
-        <h1>Mechanical engineer focused on design, prototyping, testing, and practical problem-solving.</h1>
+    <div class="container hero-shell">
+      <section class="hero-main">
+        <span class="eyebrow">Mechanical Engineering Portfolio</span>
+        <h1>I build prototypes, test assumptions, and iterate toward practical designs.</h1>
         <p class="lead">
-          I am a Mechanical Engineering graduate from California State University, Fresno with internship experience in CAD, testing, manufacturing support, technical sales, and process improvement. My work spans mobility-assist design, embedded systems, and software tools that improve engineering workflows.
+          I am a Mechanical Engineering graduate from California State University, Fresno with internship experience in product support, CAD, testing, manufacturing workflows, and technical communication. My best work happens where design decisions need to become real hardware, measurable results, and better next revisions.
         </p>
-        <div class="cta-row">
-          <a class="button primary" href="#projects">View Projects</a>
-          <a class="button secondary" href="#resume">View Resume</a>
-          <a class="button secondary" href="mailto:kodylauj@gmail.com">Contact Me</a>
+        <div class="hero-intro">
+          <p><strong>What you will find here:</strong> detailed personal and academic projects I can show in full, plus NDA-safe case studies from industry work that focus on my engineering approach, methods, and impact.</p>
+          <p><strong>What you will not find here:</strong> proprietary drawings, client information, confidential part data, or restricted deliverables.</p>
         </div>
-        <div class="badge-row" style="margin-top:1.2rem;">
-          <span class="badge">AutoCAD</span>
-          <span class="badge">SolidWorks</span>
-          <span class="badge">Creo</span>
-          <span class="badge">MATLAB</span>
-          <span class="badge">Arduino</span>
-          <span class="badge">Design Validation</span>
+        <div class="button-row">
+          <a class="button primary" href="#projects">See Featured Projects</a>
+          <a class="button secondary" href="assets/resume/Kody_Lo_Resume.pdf" target="_blank" rel="noreferrer">Open Resume</a>
+          <a class="button secondary" href="mailto:kodylauj@gmail.com">Email Me</a>
         </div>
-      </div>
+      </section>
 
-      <aside class="panel hero-stats">
-        <div class="stat">
-          <strong>3</strong>
-          <span class="muted">Engineering internships across design, manufacturing, and technical support</span>
+      <aside class="hero-side">
+        <div class="metric-grid">
+          <div class="metric">
+            <strong>3</strong>
+            <span>Engineering internships spanning design, manufacturing support, and technical sales</span>
+          </div>
+          <div class="metric">
+            <strong>2</strong>
+            <span>Hands-on flagship projects I can document in full detail with CAD, testing, and prototype evidence</span>
+          </div>
+          <div class="metric">
+            <strong>300+</strong>
+            <span>Lines of Arduino code in a working multi-factor security prototype</span>
+          </div>
+          <div class="metric">
+            <strong>CAD + Test</strong>
+            <span>Comfort moving between design revision, validation, troubleshooting, and implementation</span>
+          </div>
         </div>
-        <div class="stat">
-          <strong>5%</strong>
-          <span class="muted">Production efficiency improvement through CAD redesign and standardization</span>
-        </div>
-        <div class="stat">
-          <strong>15%</strong>
-          <span class="muted">Manual quoting workload reduction through process automation</span>
-        </div>
-        <div class="stat">
-          <strong>300+</strong>
-          <span class="muted">Lines of Arduino code used in a multi-factor security system prototype</span>
+        <div class="mini-note">
+          <h3>Best next upgrade for this site</h3>
+          <p>Add prototype photos, CAD screenshots, FEA plots, sketches, and short build notes for Car Bar and Smart Gun Case. Those assets will do a lot of the convincing for you.</p>
         </div>
       </aside>
     </div>
@@ -397,127 +587,80 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <div class="eyebrow">Featured Work</div>
-            <h2>Projects</h2>
+            <span class="eyebrow">Featured Work</span>
+            <h2>Projects that show how I think and build</h2>
           </div>
-          <p>These projects reflect the type of work I enjoy most: product design, technical problem-solving, hands-on validation, and building systems that are both functional and practical.</p>
+          <p>My strongest portfolio pieces are the ones I can document completely: the design problem, the iterations, the prototype, and the lessons learned. Those are the projects below.</p>
         </div>
 
         <div class="grid-2">
-          <article class="card project">
-            <div class="project-top">
+          <article class="card project-card">
+            <div class="project-meta">
               <div>
-                <h3>Car Bar - Mobility Assist Device</h3>
-                <p class="muted small">Senior Design Project</p>
+                <h3>Car Bar</h3>
+                <p class="muted small">Mobility assist device | Senior design project</p>
               </div>
-              <span class="badge">Mechanical Design</span>
+              <span class="label">Mechanical Design</span>
             </div>
-            <p>
-              Designed a mobility-assist device intended to improve vehicle entry and exit for users needing additional support. The project focused on user stability, accessibility, and safe load transfer in a real-world environment.
-            </p>
-            <ul>
-              <li>Developed the concept and design around user support, storage, and non-damaging vehicle attachment requirements.</li>
-              <li>Performed stress and fatigue analysis to evaluate durability under repeated loading conditions.</li>
-              <li>Collaborated with a hospital-connected stakeholder environment to improve usability and practical implementation.</li>
-              <li>Delivered a functional prototype demonstrating improved support and ease of use.</li>
+            <p class="muted">Designed a mobility-assist device intended to help users enter and exit a vehicle with greater stability, confidence, and ease. This project pushed me to balance user needs, structural loading, real-world fit, and practical prototyping.</p>
+            <ul class="list">
+              <li>Defined the design around support, accessibility, ease of storage, and compatibility with the vehicle environment.</li>
+              <li>Modeled the assembly and evaluated high-stress regions with stress and fatigue analysis to guide the design.</li>
+              <li>Worked through iteration tradeoffs between usability, manufacturability, and repeated loading durability.</li>
+              <li>Built a functional prototype to validate the concept in a realistic use case rather than stopping at CAD.</li>
             </ul>
-            <div class="badge-row">
-              <span class="badge">SolidWorks</span>
-              <span class="badge">FEA</span>
-              <span class="badge">Prototype</span>
-              <span class="badge">User-Centered Design</span>
-            </div>
-            <div class="project-links">
-              <a href="#contact">Add project photos</a>
-              <a href="#contact">Add design report PDF</a>
+            <div class="tag-row">
+              <span class="tag">SolidWorks</span>
+              <span class="tag">FEA</span>
+              <span class="tag">Prototype Fabrication</span>
+              <span class="tag">Human-Centered Design</span>
             </div>
           </article>
 
-          <article class="card project">
-            <div class="project-top">
+          <article class="card project-card">
+            <div class="project-meta">
               <div>
-                <h3>Smart Gun Case - Arduino Security System</h3>
-                <p class="muted small">Embedded Systems Project</p>
+                <h3>Smart Gun Case</h3>
+                <p class="muted small">Embedded systems project</p>
               </div>
-              <span class="badge">Embedded Systems</span>
+              <span class="label">Hardware + Software</span>
             </div>
-            <p>
-              Built a multi-factor authentication security system combining biometric and keypad-based access control. The goal was to create a reliable prototype that improved security while maintaining straightforward user interaction.
-            </p>
-            <ul>
-              <li>Programmed 300+ lines of Arduino code to manage access logic, input handling, and interface response.</li>
-              <li>Integrated biometric scanning, keypad input, and OLED display feedback into a functioning prototype.</li>
-              <li>Improved system reliability by coordinating hardware and software integration for responsive behavior.</li>
-              <li>Validated functionality through repeated prototype testing and debugging.</li>
+            <p class="muted">Built a multi-factor security system that combined biometric verification, keypad access, and display feedback into a single working prototype. The focus was reliability, integration, and a user flow that felt simple even with layered security.</p>
+            <ul class="list">
+              <li>Wrote more than 300 lines of Arduino code for access logic, input handling, and system response.</li>
+              <li>Integrated biometric scanning, keypad control, and OLED feedback into one coordinated prototype.</li>
+              <li>Debugged hardware-software interaction issues to improve consistency and responsiveness.</li>
+              <li>Validated the design through repeated test cycles instead of treating the build as a one-pass demo.</li>
             </ul>
-            <div class="badge-row">
-              <span class="badge">Arduino</span>
-              <span class="badge">C/C++</span>
-              <span class="badge">Biometrics</span>
-              <span class="badge">System Integration</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/" target="_blank" rel="noreferrer">Add GitHub link</a>
-              <a href="#contact">Add demo video</a>
+            <div class="tag-row">
+              <span class="tag">Arduino</span>
+              <span class="tag">C/C++</span>
+              <span class="tag">System Integration</span>
+              <span class="tag">Prototype Testing</span>
             </div>
           </article>
+        </div>
 
-          <article class="card project">
-            <div class="project-top">
-              <div>
-                <h3>Job Application Tracker App</h3>
-                <p class="muted small">Software / Productivity Project</p>
-              </div>
-              <span class="badge">Python App</span>
+        <div class="strip">
+          <h3>What I would show in an interview for these projects</h3>
+          <div class="strip-grid">
+            <div class="step">
+              <strong>1. Design intent</strong>
+              <span class="muted">The problem, constraints, and why the concept was chosen over alternatives.</span>
             </div>
-            <p>
-              Developed a personal job-tracking application to organize applications, statuses, dates, and workflow visibility. The project demonstrates practical software development applied to a real operational need.
-            </p>
-            <ul>
-              <li>Built a desktop workflow to track job applications, statuses, dates, and related activities in one place.</li>
-              <li>Explored UI improvements, dark mode refinements, and calendar-based task visibility.</li>
-              <li>Focused the application on usability, organization, and efficiency for repeated real-world use.</li>
-              <li>Extended the project toward integration ideas such as email syncing and workflow automation.</li>
-            </ul>
-            <div class="badge-row">
-              <span class="badge">Python</span>
-              <span class="badge">Desktop UI</span>
-              <span class="badge">Workflow Design</span>
-              <span class="badge">Automation</span>
+            <div class="step">
+              <strong>2. Iteration history</strong>
+              <span class="muted">Sketches, CAD revisions, failure points, and what changed between versions.</span>
             </div>
-            <div class="project-links">
-              <a href="https://github.com/" target="_blank" rel="noreferrer">Add repository</a>
-              <a href="#contact">Add screenshots</a>
+            <div class="step">
+              <strong>3. Technical proof</strong>
+              <span class="muted">Analysis results, test observations, code structure, and prototype evidence.</span>
             </div>
-          </article>
-
-          <article class="card project">
-            <div class="project-top">
-              <div>
-                <h3>Internship Engineering Case Study</h3>
-                <p class="muted small">Design / Manufacturing Support</p>
-              </div>
-              <span class="badge">Process Improvement</span>
+            <div class="step">
+              <strong>4. Lessons learned</strong>
+              <span class="muted">What I would improve next and how the project changed my engineering judgment.</span>
             </div>
-            <p>
-              Contributed to engineering operations through CAD updates, testing, troubleshooting, data-based process improvements, and coordination between technical and manufacturing teams.
-            </p>
-            <ul>
-              <li>Improved production efficiency by approximately 5% through redesign and standardization of legacy CAD models.</li>
-              <li>Analyzed nozzle performance and identified approximately 63% degradation in worn units to support replacement decisions.</li>
-              <li>Reduced manual quoting workload by about 15% by improving pricing and quoting processes.</li>
-              <li>Supported technical decision-making by connecting engineering, manufacturing, and customer-facing needs.</li>
-            </ul>
-            <div class="badge-row">
-              <span class="badge">Creo</span>
-              <span class="badge">AutoCAD</span>
-              <span class="badge">Testing</span>
-              <span class="badge">Cross-Functional Work</span>
-            </div>
-            <div class="project-links">
-              <a href="#experience">See internship details</a>
-            </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
@@ -526,51 +669,93 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <div class="eyebrow">Professional Experience</div>
-            <h2>Internships and Work Experience</h2>
+            <span class="eyebrow">Industry Experience</span>
+            <h2>NDA-safe engineering case studies</h2>
           </div>
-          <p>My experience blends engineering design, manufacturing exposure, testing, analysis, and technical communication.</p>
+          <p>For professional work, I describe the engineering methods I used, the type of problem I helped solve, and the level of impact I supported, without sharing restricted drawings, part numbers, customer details, or confidential deliverables.</p>
         </div>
 
-        <div class="card timeline">
-          <div class="timeline-item">
-            <div class="time-label">Jul 2024 - Oct 2024</div>
-            <div>
-              <h3>Sales Engineer Intern - Dory Power</h3>
-              <p class="muted">
-                Analyzed EV battery performance data and supported technical sales discussions that improved customer decision-making. Helped coordinate workflows between engineering and manufacturing to reduce delays while refining pricing tools for stronger quote accuracy.
-              </p>
-            </div>
-          </div>
+        <div class="card callout">
+          <strong>Portfolio rule I follow:</strong> personal and school projects are documented in detail; internship work is presented through process, testing approach, analysis logic, and measurable but non-sensitive outcomes.
+        </div>
 
-          <div class="timeline-item">
-            <div class="time-label">Jan 2023 - Aug 2023</div>
-            <div>
-              <h3>Manufacturing Engineer Intern - Excelsior Construction</h3>
-              <p class="muted">
-                Reduced manual quoting workload by approximately 15% through pricing process improvements based on historical data. Improved throughput by identifying workflow inefficiencies, analyzing shop timing, and contributing to prototype quoting platform development.
-              </p>
-            </div>
-          </div>
+        <div class="case-study-grid" style="margin-top:1rem;">
+          <article class="case-study">
+            <h3>JBT</h3>
+            <p class="small muted">Design Engineer Intern</p>
+            <p>Supported engineering updates to legacy CAD and helped develop comparative testing methods to evaluate component wear degradation. My role centered on design cleanup, structured analysis, and producing information that supported maintenance and replacement decisions.</p>
+          </article>
+          <article class="case-study">
+            <h3>Excelsior Construction</h3>
+            <p class="small muted">Manufacturing Engineer Intern</p>
+            <p>Improved quoting and workflow visibility by using historical data, shop timing, and process mapping to reduce manual effort. The work was less about one part and more about making a system easier to use and scale.</p>
+          </article>
+          <article class="case-study">
+            <h3>Dory Power</h3>
+            <p class="small muted">Sales Engineer Intern</p>
+            <p>Analyzed technical performance information to support customer-facing decisions while coordinating between engineering and manufacturing teams. The value was in translating technical detail into practical action.</p>
+          </article>
+        </div>
 
-          <div class="timeline-item">
-            <div class="time-label">Jun 2022 - Dec 2022</div>
+        <div class="timeline" style="margin-top:1rem;">
+          <article class="timeline-item">
+            <div class="time">Jul 2024 - Oct 2024</div>
             <div>
-              <h3>Design Engineer Intern - John Bean Technologies Corp</h3>
-              <p class="muted">
-                Improved production efficiency by approximately 5% through CAD redesign and standardization of legacy models using Creo and AutoCAD. Conducted nozzle testing that identified about 63% performance degradation in worn nozzles, supporting maintenance and replacement decisions.
-              </p>
+              <h3>Sales Engineer Intern | Dory Power</h3>
+              <p class="muted">Worked with technical product information, customer needs, and internal coordination points to support more informed sales and manufacturing decisions. Focused on analysis, communication, and reducing avoidable friction between teams.</p>
             </div>
-          </div>
+          </article>
+          <article class="timeline-item">
+            <div class="time">Jan 2023 - Aug 2023</div>
+            <div>
+              <h3>Manufacturing Engineer Intern | Excelsior Construction</h3>
+              <p class="muted">Helped improve quoting workflows and process visibility by studying historical pricing data, identifying inefficiencies, and contributing to better workflow structure. This experience sharpened my process-improvement mindset.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="time">Jun 2022 - Dec 2022</div>
+            <div>
+              <h3>Design Engineer Intern | John Bean Technologies Corp.</h3>
+              <p class="muted">Updated and standardized CAD models, supported design revision work, and developed comparative testing approaches to assess wear-related performance changes. It was a strong introduction to how careful engineering support improves downstream operations.</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="time">Mar 2021 - Jun 2022</div>
+            <div>
+              <h3>Sales Manager | GNC</h3>
+              <p class="muted">Managed team operations, training, and inventory discipline in a fast-paced environment. That experience strengthened communication, accountability, and day-to-day leadership under pressure.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-          <div class="timeline-item">
-            <div class="time-label">Mar 2021 - Jun 2022</div>
-            <div>
-              <h3>Sales Manager - GNC</h3>
-              <p class="muted">
-                Managed and trained a team of 8 associates while improving inventory accuracy, reporting consistency, and customer-facing operations. This role strengthened leadership, communication, and process discipline in a fast-paced environment.
-              </p>
-            </div>
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Process</span>
+            <h2>How I approach engineering problems</h2>
+          </div>
+          <p>I like work that starts with a real constraint and ends with something testable. Across school, projects, and internships, the pattern below shows up again and again.</p>
+        </div>
+
+        <div class="strip-grid">
+          <div class="step">
+            <strong>Frame the problem</strong>
+            <span class="muted">Understand the user need, operational constraint, or failure mode before jumping into the design.</span>
+          </div>
+          <div class="step">
+            <strong>Build a workable concept</strong>
+            <span class="muted">Use CAD, rough calculations, or quick prototypes to get to something real fast enough to evaluate.</span>
+          </div>
+          <div class="step">
+            <strong>Test the weak points</strong>
+            <span class="muted">Look for where wear, stress, usability, or integration issues are most likely to show up.</span>
+          </div>
+          <div class="step">
+            <strong>Revise with evidence</strong>
+            <span class="muted">Use the result, not the ego, to decide what to change next.</span>
           </div>
         </div>
       </div>
@@ -580,104 +765,34 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <div class="eyebrow">Core Capabilities</div>
-            <h2>Skills</h2>
+            <span class="eyebrow">Capabilities</span>
+            <h2>Tools and strengths</h2>
           </div>
-          <p>This section is intentionally written for recruiters and hiring managers so they can quickly understand where I can contribute.</p>
+          <p>This is the mix I bring into entry-level mechanical design, product development, manufacturing engineering, and engineering support roles.</p>
         </div>
 
         <div class="grid-4">
-          <div class="card">
-            <h3>CAD and Design</h3>
-            <p>AutoCAD, Creo, SolidWorks, design revisions, legacy model updates, prototype-focused mechanical development.</p>
-          </div>
-          <div class="card">
-            <h3>Testing and Analysis</h3>
-            <p>Basic FEA, performance testing, design validation, troubleshooting, fatigue and stress evaluation, engineering comparisons.</p>
-          </div>
-          <div class="card">
-            <h3>Programming</h3>
-            <p>MATLAB, Arduino, beginner-to-intermediate Python projects, workflow tooling, logic building, automation exploration.</p>
-          </div>
-          <div class="card">
-            <h3>Professional Tools</h3>
-            <p>Microsoft Office, engineering documentation, cross-functional coordination, technical communication, data-driven support.</p>
-          </div>
+          <article class="card">
+            <h3>CAD and design</h3>
+            <p class="muted">SolidWorks, Creo, AutoCAD, part and assembly modeling, design revision, and design-for-practical-use thinking.</p>
+          </article>
+          <article class="card">
+            <h3>Testing and validation</h3>
+            <p class="muted">Comparative testing, troubleshooting, stress and fatigue analysis, validation planning, and engineering judgment built from iteration.</p>
+          </article>
+          <article class="card">
+            <h3>Embedded and software</h3>
+            <p class="muted">Arduino, C/C++, MATLAB, Python-based workflow tools, and comfort bridging mechanical systems with basic software logic.</p>
+          </article>
+          <article class="card">
+            <h3>Professional execution</h3>
+            <p class="muted">Documentation, cross-functional communication, technical translation, process improvement, and willingness to own the next step.</p>
+          </article>
         </div>
 
-        <div class="callout" style="margin-top:1.2rem;">
-          I am currently most interested in entry-level roles in mechanical design, manufacturing engineering, product development, technical operations, and engineering-support environments where I can build depth quickly.
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="resume">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <div class="eyebrow">Resume</div>
-            <h2>Resume and Application Materials</h2>
-          </div>
-          <p>Use this section to host your latest PDF resume and direct recruiters to the most relevant supporting material.</p>
-        </div>
-
-        <div class="resume-box">
-          <div class="card">
-            <h3>Resume Download</h3>
-            <p>
-              Upload your resume PDF into your repository and replace the placeholder link below.
-            </p>
-            <div class="project-links">
-              <a class="button primary" href="assets/resume/Kody_Lo_Resume.pdf" target="_blank" rel="noreferrer">Download Resume PDF</a>
-            </div>
-            <p class="small muted" style="margin-top:1rem;">
-              Suggested file path: <code>assets/resume/Kody_Lo_Resume.pdf</code>
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>What to add next</h3>
-            <ul class="checklist muted">
-              <li>Upload your newest resume PDF</li>
-              <li>Add LinkedIn URL</li>
-              <li>Add GitHub project repositories</li>
-              <li>Add project screenshots and CAD renders</li>
-              <li>Add one paragraph case studies for each project</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <div class="eyebrow">About</div>
-            <h2>About Me</h2>
-          </div>
-          <p>A concise introduction that keeps the focus on engineering capability and career direction.</p>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <p>
-              I graduated from California State University, Fresno with a B.S. in Mechanical Engineering. Across internships and project work, I have built experience in CAD, testing, troubleshooting, cross-functional coordination, and prototype development.
-            </p>
-            <p>
-              I enjoy work that combines technical thinking with practical execution, especially when the end result improves a process, validates a design, or produces a useful product. I am particularly drawn to roles where I can continue developing in design, manufacturing, and product-focused engineering environments.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>What I bring</h3>
-            <ul class="checklist muted">
-              <li>Hands-on engineering mindset with willingness to learn quickly</li>
-              <li>Experience translating technical work into actionable outcomes</li>
-              <li>Strong interest in building useful systems, not just analyzing them</li>
-              <li>Comfort working across design, operations, and communication tasks</li>
-            </ul>
-          </div>
+        <div class="strip" style="margin-top:1.2rem;">
+          <h3>What kind of role fits me best</h3>
+          <p class="muted">I am most interested in early-career roles where I can keep building depth in mechanical design, manufacturing engineering, product development, validation, and technical operations.</p>
         </div>
       </div>
     </section>
@@ -686,24 +801,35 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <div class="eyebrow">Contact</div>
-            <h2>Get In Touch</h2>
+            <span class="eyebrow">Contact</span>
+            <h2>Reach out</h2>
           </div>
-          <p>Keep this section simple and professional. Make it easy for recruiters to contact you in one click.</p>
+          <p>If you want to talk about a role, a project, or the engineering process behind any of this work, I would be glad to connect.</p>
         </div>
 
-        <div class="grid-3">
-          <div class="contact-item">
-            <h3>Email</h3>
-            <p><a href="mailto:kodylauj@gmail.com">kodylauj@gmail.com</a></p>
+        <div class="resume-box">
+          <div class="card">
+            <h3>Resume and portfolio next steps</h3>
+            <ul class="list">
+              <li>Upload your latest resume PDF to <code>assets/resume/Kody_Lo_Resume.pdf</code>.</li>
+              <li>Add project photos, CAD screenshots, and any FEA or testing visuals you are comfortable sharing.</li>
+              <li>Replace any placeholder contact links with your final LinkedIn or project repository URLs.</li>
+              <li>Add one image gallery or short case-study PDF for Car Bar and Smart Gun Case when ready.</li>
+            </ul>
           </div>
-          <div class="contact-item">
-            <h3>GitHub</h3>
-            <p><a href="https://github.com/yourusername" target="_blank" rel="noreferrer">github.com/yourusername</a></p>
-          </div>
-          <div class="contact-item">
-            <h3>LinkedIn</h3>
-            <p><a href="https://linkedin.com/in/yourusername" target="_blank" rel="noreferrer">linkedin.com/in/yourusername</a></p>
+          <div class="contact-grid">
+            <article class="contact-card">
+              <h3>Email</h3>
+              <p><a href="mailto:kodylauj@gmail.com">kodylauj@gmail.com</a></p>
+            </article>
+            <article class="contact-card">
+              <h3>GitHub</h3>
+              <p><a href="https://github.com/Mongtser" target="_blank" rel="noreferrer">github.com/Mongtser</a></p>
+            </article>
+            <article class="contact-card">
+              <h3>Resume</h3>
+              <p><a href="assets/resume/Kody_Lo_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a></p>
+            </article>
           </div>
         </div>
       </div>
@@ -712,7 +838,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© 2026 Kody Lo. Built for GitHub Pages.</p>
+      <p>© 2026 Kody Lo. Built as a focused, NDA-safe engineering portfolio.</p>
     </div>
   </footer>
 </body>
