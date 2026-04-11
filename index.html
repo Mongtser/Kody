@@ -348,6 +348,25 @@
       color: var(--muted);
     }
 
+    .project-figure {
+      margin: 0;
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .project-figure img {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(56, 34, 20, 0.08);
+      object-fit: cover;
+    }
+
+    .project-figure figcaption {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
     .code-sample {
       border-top: 1px solid var(--line);
       padding-top: 0.95rem;
@@ -606,6 +625,10 @@
               <li>Debugged hardware-software interaction issues to improve consistency and responsiveness.</li>
               <li>Validated the design through repeated test cycles rather than a one-pass demo.</li>
             </ul>
+            <figure class="project-figure">
+              <img src="assets/images/smart-gun-case-prototype.png" alt="Smart Gun Case prototype with keypad, display, and latch hardware integrated into the enclosure" />
+              <figcaption>The physical prototype prioritized proving system integration and user interaction within the budget and time available for the build.</figcaption>
+            </figure>
             <div class="project-note">
               The prototype enclosure was built within budget and time constraints, so the priority was proving the access-control logic, component integration, and user feedback flow in a working physical build rather than polishing the final packaging.
             </div>
