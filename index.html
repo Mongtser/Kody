@@ -340,6 +340,47 @@
       gap: 0.55rem;
     }
 
+    .project-note {
+      padding: 0.95rem 1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: 14px;
+      background: rgba(181, 83, 47, 0.08);
+      color: var(--muted);
+    }
+
+    .code-sample {
+      border-top: 1px solid var(--line);
+      padding-top: 0.95rem;
+    }
+
+    .code-sample summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--accent-deep);
+      list-style: none;
+    }
+
+    .code-sample summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .code-sample pre {
+      margin: 0.85rem 0 0;
+      padding: 1rem;
+      border-radius: 18px;
+      overflow-x: auto;
+      background: #1f1a17;
+      color: #f8f1e7;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
+
+    .code-sample code {
+      font-family: 'IBM Plex Mono', 'Consolas', monospace;
+      white-space: pre;
+    }
+
     .tag {
       display: inline-flex;
       padding: 0.42rem 0.68rem;
@@ -565,12 +606,58 @@
               <li>Debugged hardware-software interaction issues to improve consistency and responsiveness.</li>
               <li>Validated the design through repeated test cycles rather than a one-pass demo.</li>
             </ul>
+            <div class="project-note">
+              The prototype enclosure was built within budget and time constraints, so the priority was proving the access-control logic, component integration, and user feedback flow in a working physical build rather than polishing the final packaging.
+            </div>
             <div class="tag-row">
               <span class="tag">Arduino</span>
               <span class="tag">C/C++</span>
               <span class="tag">System Integration</span>
               <span class="tag">Prototype Testing</span>
             </div>
+            <details class="code-sample">
+              <summary>View redacted Arduino architecture excerpt</summary>
+              <p class="muted small">This public sample removes live access codes and sensitive administrative details while still showing the system structure I built.</p>
+              <pre><code>#include &lt;Adafruit_Fingerprint.h&gt;
+#include &lt;Servo.h&gt;
+#include &lt;LiquidCrystal.h&gt;
+#include &lt;Keypad.h&gt;
+
+#define RELAY_PIN 13
+#define ROW_NUM 4
+#define COLUMN_NUM 4
+
+Servo lockServo;
+LiquidCrystal lcd(50, 48, 46, 2, 12, 40);
+bool fingerprintScanCompleted = false;
+bool keypadUnlocked = false;
+String inputPassword;
+
+const String password_1 = "&lt;redacted&gt;";
+const String password_2 = "&lt;redacted&gt;";
+const String password_3 = "&lt;redacted&gt;";
+
+void setup() {
+  Serial.begin(9600);
+  finger.begin(57600);
+  lcd.begin(16, 2);
+  lockServo.attach(13);
+}
+
+void loop() {
+  if (!fingerprintScanCompleted) {
+    getFingerprintID();
+  }
+
+  if (fingerprintScanCompleted) {
+    handleKeypadAccess();
+  }
+
+  if (fingerprintScanCompleted && keypadUnlocked) {
+    handleEnrollmentOrLockMenu();
+  }
+}</code></pre>
+            </details>
           </article>
         </div>
       </div>
