@@ -91,9 +91,11 @@
       color: var(--muted);
       font-weight: 600;
       font-size: 0.94rem;
+      transition: color 0.16s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: var(--accent-deep);
     }
 
@@ -389,28 +391,9 @@
       font-size: 0.95rem;
     }
 
-    .case-study-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .case-study {
-      padding: 1.2rem;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.56);
-      border: 1px solid rgba(31, 26, 23, 0.08);
-      box-shadow: 0 8px 22px rgba(56, 34, 20, 0.06);
-    }
-
-    .case-study p {
-      color: var(--muted);
-    }
-
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1rem;
       margin-top: 1rem;
     }
@@ -436,7 +419,6 @@
       .grid-2,
       .grid-4,
       .process-grid,
-      .case-study-grid,
       .contact-grid,
       .timeline-item {
         grid-template-columns: 1fr;
@@ -576,7 +558,7 @@
               </div>
               <span class="label">Hardware + Software</span>
             </div>
-            <p class="muted">Built a multi-factor security prototype combining biometric access, keypad input, and display feedback.</p>
+            <p class="muted">Built an embedded systems prototype focused on layered physical access control using biometric access, keypad input, and display feedback.</p>
             <ul class="list">
               <li>Wrote 300+ lines of Arduino code for access logic, input handling, and system response.</li>
               <li>Integrated biometric scanning, keypad control, and OLED feedback into one prototype.</li>
@@ -599,26 +581,8 @@
         <div class="section-header">
           <div>
             <span class="eyebrow">Industry Experience</span>
-            <h2>Engineering case studies</h2>
+            <h2>Experience</h2>
           </div>
-        </div>
-
-        <div class="case-study-grid">
-          <article class="case-study">
-            <h3>JBT</h3>
-            <p class="small muted">Design Engineer Intern</p>
-            <p>Supported engineering updates to legacy CAD and helped develop comparative testing methods to evaluate component wear degradation. My role centered on design cleanup, structured analysis, and producing information that supported maintenance and replacement decisions.</p>
-          </article>
-          <article class="case-study">
-            <h3>Excelsior Construction</h3>
-            <p class="small muted">Manufacturing Engineer Intern</p>
-            <p>Improved quoting and workflow visibility by using historical data, shop timing, and process mapping to reduce manual effort. The work was less about one part and more about making a system easier to use and scale.</p>
-          </article>
-          <article class="case-study">
-            <h3>Dory Power</h3>
-            <p class="small muted">Sales Engineer Intern</p>
-            <p>Analyzed technical performance information to support customer-facing decisions while coordinating between engineering and manufacturing teams. The value was in translating technical detail into practical action.</p>
-          </article>
         </div>
 
         <div class="timeline">
@@ -647,7 +611,7 @@
             <div class="time">Mar 2021 - Jun 2022</div>
             <div>
               <h3>Sales Manager | GNC</h3>
-              <p class="muted">Managed team operations, training, and inventory discipline in a fast-paced environment. That experience strengthened communication, accountability, and day-to-day leadership under pressure.</p>
+              <p class="muted">Managed team operations, training, and inventory discipline in a fast-paced environment. This role matters here because it built the leadership, communication, and accountability skills I later brought into internship settings.</p>
             </div>
           </article>
         </div>
@@ -666,19 +630,19 @@
         <div class="process-grid">
           <div class="step">
             <strong>Frame the problem</strong>
-            <span class="muted">Understand the user need, operational constraint, or failure mode before jumping into the design.</span>
+            <span class="muted">Understand the user need, operational constraint, or failure mode before jumping into the design. See: Car Bar.</span>
           </div>
           <div class="step">
             <strong>Build a workable concept</strong>
-            <span class="muted">Use CAD, rough calculations, or quick prototypes to get to something real fast enough to evaluate.</span>
+            <span class="muted">Use CAD, rough calculations, or quick prototypes to get to something real fast enough to evaluate. See: Car Bar and Smart Gun Case.</span>
           </div>
           <div class="step">
             <strong>Test the weak points</strong>
-            <span class="muted">Look for where wear, stress, usability, or integration issues are most likely to show up.</span>
+            <span class="muted">Look for where wear, stress, usability, or integration issues are most likely to show up. See: Smart Gun Case and JBT.</span>
           </div>
           <div class="step">
             <strong>Revise with evidence</strong>
-            <span class="muted">Use the result, not the ego, to decide what to change next.</span>
+            <span class="muted">Use the result, not the ego, to decide what to change next. See: Car Bar, Smart Gun Case, and Excelsior.</span>
           </div>
         </div>
       </div>
@@ -707,8 +671,8 @@
             <p class="muted">Arduino, C/C++, MATLAB, Python-based workflow tools, and comfort bridging mechanical systems with basic software logic.</p>
           </article>
           <article class="card">
-            <h3>Professional execution</h3>
-            <p class="muted">Documentation, cross-functional communication, technical translation, process improvement, and willingness to own the next step.</p>
+            <h3>Workflow and coordination</h3>
+            <p class="muted">Quoting workflow improvement, historical data review, cross-functional coordination, and technical communication shaped by Excelsior, Dory Power, and GNC.</p>
           </article>
         </div>
       </div>
@@ -743,8 +707,49 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© 2026 Kody Lo. Built as a focused engineering portfolio.</p>
+      <p>&copy; 2026 Kody Lo. Built as a focused engineering portfolio.</p>
     </div>
   </footer>
+
+  <script>
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    const setActiveLink = (id) => {
+      navLinks.forEach((link) => {
+        const isActive = link.getAttribute('href') === `#${id}`;
+        link.classList.toggle('active', isActive);
+        if (isActive) {
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleSection?.target?.id) {
+          setActiveLink(visibleSection.target.id);
+        }
+      },
+      {
+        rootMargin: '-35% 0px -45% 0px',
+        threshold: [0.2, 0.4, 0.6]
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    if (sections[0]?.id) {
+      setActiveLink(sections[0].id);
+    }
+  </script>
 </body>
 </html>
