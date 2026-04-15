@@ -88,15 +88,36 @@
     }
 
     .nav-links a {
+      position: relative;
       color: var(--muted);
       font-weight: 600;
       font-size: 0.94rem;
+      padding-bottom: 0.2rem;
       transition: color 0.16s ease;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--accent-deep);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.16s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
     }
 
     .hero {
@@ -258,6 +279,12 @@
 
     .section {
       padding: 1.8rem 0 0;
+    }
+
+    .section-copy {
+      max-width: 62ch;
+      color: var(--muted);
+      margin-top: 0.35rem;
     }
 
     .section-header {
@@ -584,12 +611,32 @@
   </header>
 
   <main>
+    <section class="section" aria-label="Recruiter snapshot">
+      <div class="container">
+        <div class="grid-3">
+          <article class="card">
+            <h3>Best fit</h3>
+            <p class="muted">Early-career mechanical engineering roles that value mechanical design, prototyping, testing, manufacturing support, and practical iteration.</p>
+          </article>
+          <article class="card">
+            <h3>How I work</h3>
+            <p class="muted">I like moving from CAD to testable hardware, finding weak points early, and communicating clearly enough that the next revision is easier to make.</p>
+          </article>
+          <article class="card">
+            <h3>Availability</h3>
+            <p class="muted">Open to full-time mechanical engineering roles and open to relocation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="projects">
       <div class="container">
         <div class="section-header">
           <div>
             <span class="eyebrow">Featured Work</span>
             <h2>Projects that show how I think and build</h2>
+            <p class="section-copy">Public-safe case studies focused on the problem, what I personally built, and how I validated the work.</p>
           </div>
         </div>
 
@@ -705,6 +752,7 @@ void loop() {
           <div>
             <span class="eyebrow">Industry Experience</span>
             <h2>Experience</h2>
+            <p class="section-copy">Internship work is presented in NDA-safe terms, with emphasis on methods, engineering judgment, and the kind of problems I was trusted to support.</p>
           </div>
         </div>
 
@@ -831,6 +879,10 @@ void loop() {
             <h3>Resume</h3>
             <p><a href="assets/resume/Kody_Lo_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a></p>
           </article>
+          <article class="contact-card">
+            <h3>Availability</h3>
+            <p>Open to full-time ME roles and open to relocation.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -844,6 +896,7 @@ void loop() {
 
   <script>
     const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+    const nav = document.querySelector('.nav');
     const sections = navLinks
       .map((link) => document.querySelector(link.getAttribute('href')))
       .filter(Boolean);
@@ -860,27 +913,35 @@ void loop() {
       });
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSection = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const syncActiveLinkToScroll = () => {
+      const navOffset = (nav?.offsetHeight || 0) + 28;
+      const scrollMarker = window.scrollY + navOffset;
+      let currentSection = sections[0];
 
-        if (visibleSection?.target?.id) {
-          setActiveLink(visibleSection.target.id);
+      sections.forEach((section) => {
+        if (section.offsetTop <= scrollMarker) {
+          currentSection = section;
         }
-      },
-      {
-        rootMargin: '-35% 0px -45% 0px',
-        threshold: [0.2, 0.4, 0.6]
       }
-    );
+      });
 
-    sections.forEach((section) => observer.observe(section));
+      if (currentSection?.id) {
+        setActiveLink(currentSection.id);
+      }
+    };
 
-    if (sections[0]?.id) {
-      setActiveLink(sections[0].id);
-    }
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        const targetId = link.getAttribute('href').replace('#', '');
+        setActiveLink(targetId);
+      });
+    });
+
+    window.addEventListener('scroll', syncActiveLinkToScroll, { passive: true });
+    window.addEventListener('resize', syncActiveLinkToScroll);
+    window.addEventListener('load', syncActiveLinkToScroll);
+
+    syncActiveLinkToScroll();
   </script>
 </body>
 </html>
