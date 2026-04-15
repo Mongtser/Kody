@@ -611,25 +611,6 @@
   </header>
 
   <main>
-    <section class="section" aria-label="Recruiter snapshot">
-      <div class="container">
-        <div class="grid-3">
-          <article class="card">
-            <h3>Best fit</h3>
-            <p class="muted">Early-career mechanical engineering roles that value mechanical design, prototyping, testing, manufacturing support, and practical iteration.</p>
-          </article>
-          <article class="card">
-            <h3>How I work</h3>
-            <p class="muted">I like moving from CAD to testable hardware, finding weak points early, and communicating clearly enough that the next revision is easier to make.</p>
-          </article>
-          <article class="card">
-            <h3>Availability</h3>
-            <p class="muted">Open to full-time mechanical engineering roles and open to relocation.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="projects">
       <div class="container">
         <div class="section-header">
@@ -711,7 +692,10 @@
               <span class="tag">System Integration</span>
               <span class="tag">Prototype Testing</span>
             </div>
-            <details class="code-sample">
+            <div class="button-row">
+              <a class="button secondary" href="#smart-gun-case-code">View Code Excerpt</a>
+            </div>
+            <details class="code-sample" id="smart-gun-case-code">
               <summary>View redacted Arduino architecture excerpt</summary>
               <p class="muted small">This public sample removes live access codes and sensitive administrative details while still showing the system structure I built.</p>
               <pre><code>#include &lt;Adafruit_Fingerprint.h&gt;
@@ -723,6 +707,7 @@
 #define ROW_NUM 4
 #define COLUMN_NUM 4
 
+Adafruit_Fingerprint finger = Adafruit_Fingerprint(&amp;Serial1);
 Servo lockServo;
 LiquidCrystal lcd(50, 48, 46, 2, 12, 40);
 bool fingerprintScanCompleted = false;
@@ -798,13 +783,6 @@ void loop() {
               <p class="muted">Updated and standardized CAD models, supported design revision work, and developed comparative testing approaches to assess wear-related performance changes. It was a strong introduction to how careful engineering support improves downstream operations.</p>
             </div>
           </article>
-          <article class="timeline-item">
-            <div class="time">Mar 2021 - Jun 2022</div>
-            <div>
-              <h3>Sales Manager | GNC</h3>
-              <p class="muted">Managed team operations, training, and inventory discipline in a fast-paced environment. This role matters here because it built the leadership, communication, and accountability skills I later brought into internship settings.</p>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -862,8 +840,8 @@ void loop() {
             <p class="muted">Arduino, C/C++, MATLAB, Python-based workflow tools, and comfort bridging mechanical systems with basic software logic.</p>
           </article>
           <article class="card">
-            <h3>Workflow and coordination</h3>
-            <p class="muted">Quoting workflow improvement, historical data review, cross-functional coordination, and technical communication shaped by Excelsior, Dory Power, and GNC.</p>
+            <h3>Manufacturing and process support</h3>
+            <p class="muted">Workflow analysis, historical data review, quoting support, and design documentation shaped by Excelsior and JBT.</p>
           </article>
         </div>
       </div>
@@ -886,15 +864,11 @@ void loop() {
           </article>
           <article class="contact-card">
             <h3>GitHub</h3>
-            <p><a href="https://github.com/Mongtser/Kody" target="_blank" rel="noreferrer">github.com/Mongtser/Kody</a></p>
+            <p><a href="https://github.com/Mongtser" target="_blank" rel="noreferrer">github.com/Mongtser</a></p>
           </article>
           <article class="contact-card">
             <h3>Resume</h3>
             <p><a href="assets/resume/Kody_Lo_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a></p>
-          </article>
-          <article class="contact-card">
-            <h3>Availability</h3>
-            <p>Open to full-time ME roles and open to relocation.</p>
           </article>
         </div>
       </div>
