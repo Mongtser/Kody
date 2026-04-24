@@ -933,11 +933,16 @@ void loop() {
     });
 
     document.querySelectorAll('[data-open-details]').forEach((link) => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (event) => {
         const target = document.getElementById(link.dataset.openDetails);
-        if (target instanceof HTMLDetailsElement) {
-          target.open = true;
+        if (!target) {
+          return;
         }
+
+        event.preventDefault();
+        target.setAttribute('open', '');
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', `#${target.id}`);
       });
     });
 
