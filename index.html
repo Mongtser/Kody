@@ -693,7 +693,7 @@
               <span class="tag">Prototype Testing</span>
             </div>
             <div class="button-row">
-              <a class="button secondary" href="#smart-gun-case-code">View Code Excerpt</a>
+              <a class="button secondary" href="#smart-gun-case-code" data-open-details="smart-gun-case-code">View Code Excerpt</a>
               <a class="button secondary" href="https://github.com/Mongtser/Kody/tree/main/projects/smart-gun-case" target="_blank" rel="noreferrer">View on GitHub</a>
             </div>
             <details class="code-sample" id="smart-gun-case-code">
@@ -929,6 +929,15 @@ void loop() {
       link.addEventListener('click', () => {
         const targetId = link.getAttribute('href').replace('#', '');
         setActiveLink(targetId);
+      });
+    });
+
+    document.querySelectorAll('[data-open-details]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const target = document.getElementById(link.dataset.openDetails);
+        if (target instanceof HTMLDetailsElement) {
+          target.open = true;
+        }
       });
     });
 
